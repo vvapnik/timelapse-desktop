@@ -1,0 +1,9 @@
+[package]
+name = "timelapse-core"
+description = "Timelapse logic: photo scanning, sequence splitting and FFmpeg invocation. No Tauri dependencies."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]

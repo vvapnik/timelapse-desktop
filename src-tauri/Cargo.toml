@@ -1,0 +1,24 @@
+[package]
+name = "timelapse-desktop"
+description = "Desktop app that turns a folder of photos into timelapse videos"
+authors = ["Vladislav Vapnik"]
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[lib]
+# The `_lib` suffix avoids a lib/bin name clash on Windows,
+# see https://github.com/rust-lang/cargo/issues/8519
+name = "timelapse_desktop_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+timelapse-core = { path = "../crates/timelapse-core" }
+tauri = { version = "2", features = [] }
+tauri-plugin-opener = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
