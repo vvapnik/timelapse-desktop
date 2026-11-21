@@ -48,12 +48,12 @@ fn make_photos(ffmpeg: &Path, dir: &Path, offsets: &[u64], size: &str) {
     }
 }
 
-/// Counts video frames in a file using FFmpeg itself.
+/// Counts video frames by decoding the file (stream copy reports frame=0 on FFmpeg < 7.1).
 fn count_frames(ffmpeg: &Path, video: &Path) -> u64 {
     let out = Command::new(ffmpeg)
         .args(["-hide_banner", "-nostats", "-progress", "pipe:1", "-i"])
         .arg(video)
-        .args(["-map", "0:v", "-c", "copy", "-f", "null", "-"])
+        .args(["-map", "0:v", "-f", "null", "-"])
         .output()
         .unwrap();
     String::from_utf8_lossy(&out.stdout)
