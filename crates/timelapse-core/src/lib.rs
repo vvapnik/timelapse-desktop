@@ -1,10 +1,24 @@
 //! Core timelapse logic, independent of the GUI.
 //!
-//! This crate will hold photo scanning, sequence splitting, output naming and
-//! FFmpeg argument building (see TASK-113.3 / TASK-113.4). It must not depend
-//! on Tauri so that a CLI can reuse it later.
+//! Ports the behaviour of `create_timelapse.sh` from
+//! [timelapse_from_photos](https://github.com/vvapnik/timelapse_from_photos):
+//! find photos, order them by capture time, split them into sequences at long
+//! pauses, and name the output files. It must not depend on Tauri so that a CLI
+//! can reuse it later.
+
+pub mod ffmpeg;
+pub mod naming;
+pub mod render;
+pub mod scan;
+pub mod sequence;
 
 use std::path::Path;
+
+pub use ffmpeg::{FfmpegError, Quality, VideoSettings, check_ffmpeg};
+pub use naming::{OutputFormat, default_output_paths};
+pub use render::{CancelToken, RenderError, RenderEvent, RenderTask, render};
+pub use scan::{Frame, ScanError, ScanResult, TimeSource, scan_folder};
+pub use sequence::{DEFAULT_GAP_SECONDS, Sequence, split_into_sequences};
 
 /// Image file extensions accepted as timelapse frames (lowercase, without dot).
 /// Matches `create_timelapse.sh`.

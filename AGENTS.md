@@ -25,16 +25,23 @@ Defaults: FPS 30 (1–120), quality low/medium/high = CRF 28/23/18 with preset f
 `libx264` + `yuv420p`, formats mp4/mov/avi, sequence gap 120 s, output
 `{folder}_timelapse.{fmt}` or `{folder}_timelapse_part{N}.{fmt}` in the source folder.
 
+## Behaviour differences from the script (intentional)
+
+- One video frame per photo (`setpts=N/(fps*TB)`), unlike the script's 1/25 s per photo + resample.
+- Order by EXIF capture time (fallback mtime), ties by path; hidden files ignored.
+- Render to a hidden `.<name>.partial.<ext>` file, rename on success.
+
 ## Checks before finishing a change
 
 ```bash
 cargo fmt --all --check
 cargo clippy --workspace --all-targets -- -D warnings
-cargo test --workspace
+cargo test --workspace   # render tests need FFmpeg: $FFMPEG or `ffmpeg` on PATH
 npm run build
 ```
 
 ## Conventions
 
 - Everything in the repository (code, comments, UI strings, docs, commit messages) is in English.
-- Do not commit FFmpeg binaries or build outputs.
+- Do not commit FFmpeg binaries or build outputs. `npm run fetch-ffmpeg` downloads the sidecar;
+  when changing a build in `scripts/ffmpeg-sources.json`, verify it has libx264 and no `--enable-nonfree`.

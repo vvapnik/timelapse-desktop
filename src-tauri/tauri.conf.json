@@ -41,6 +41,9 @@
       "icons/icon.ico"
     ],
     "shortDescription": "Turn a folder of photos into timelapse videos",
-    "license": "MIT"
+    "license": "MIT",
+    "externalBin": [
+      "binaries/ffmpeg"
+    ]
   }
 }

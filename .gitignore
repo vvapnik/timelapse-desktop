@@ -26,3 +26,6 @@ dist-ssr
 # Rust
 target
 src-tauri/gen/schemas
+
+# Bundled FFmpeg sidecar (downloaded by scripts/fetch-ffmpeg.mjs)
+src-tauri/binaries/
