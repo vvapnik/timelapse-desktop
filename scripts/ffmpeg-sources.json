@@ -24,10 +24,10 @@
       "url": "https://github.com/eugeneware/ffmpeg-static/releases/download/b6.1.1/ffmpeg-linux-x64.gz",
       "sha256": "bfe8a8fc511530457b528c48d77b5737527b504a3797a9bc4866aeca69c2dffa",
       "archive": "gz",
-      "version": "6.1.1",
+      "version": "7.0.2",
       "license": "GPL-3.0-or-later",
-      "provider": "https://github.com/eugeneware/ffmpeg-static",
-      "source": "https://ffmpeg.org/releases/ffmpeg-6.1.1.tar.xz"
+      "provider": "https://github.com/eugeneware/ffmpeg-static (build by johnvansickle.com)",
+      "source": "https://ffmpeg.org/releases/ffmpeg-7.0.2.tar.xz"
     },
     "x86_64-pc-windows-msvc": {
       "url": "https://github.com/eugeneware/ffmpeg-static/releases/download/b6.1.1/ffmpeg-win32-x64.gz",
@@ -35,7 +35,7 @@
       "archive": "gz",
       "version": "6.1.1",
       "license": "GPL-3.0-or-later",
-      "provider": "https://github.com/eugeneware/ffmpeg-static",
+      "provider": "https://github.com/eugeneware/ffmpeg-static (build by gyan.dev, essentials)",
       "source": "https://ffmpeg.org/releases/ffmpeg-6.1.1.tar.xz"
     }
   }
